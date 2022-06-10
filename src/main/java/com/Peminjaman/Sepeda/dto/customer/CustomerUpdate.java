@@ -18,4 +18,6 @@ public class CustomerUpdate {
     public static CustomerUpdate set (Customers customer){
         return new CustomerUpdate(customer.getAddress(),customer.getPhone(),customer.getEmail());
     }
+
+    //test
 }
