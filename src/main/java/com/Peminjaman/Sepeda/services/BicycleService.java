@@ -9,6 +9,7 @@ import com.Peminjaman.Sepeda.dto.employee.EmployeeHeaderDto;
 import com.Peminjaman.Sepeda.dto.loan.LoanHeaderDto;
 import com.Peminjaman.Sepeda.entity.Bicycle;
 import com.Peminjaman.Sepeda.entity.Employee;
+import com.Peminjaman.Sepeda.entity.Loan;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -55,7 +56,8 @@ public class BicycleService {
     }
 
     public List<LoanHeaderDto> findLoanBYBicycle(Integer bicycleID){
-        Stream<LoanHeaderDto> loanStream = loanRepository.findLoanBySepeda(bicycleID).stream();
+        List<Loan> listloant = loanRepository.findbySepeda(bicycleID);
+        Stream<LoanHeaderDto> loanStream = LoanHeaderDto.tolist(listloant).stream();
         return loanStream.collect(Collectors.toList());
 
     }

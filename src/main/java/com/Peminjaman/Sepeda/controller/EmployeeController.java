@@ -7,6 +7,7 @@ import com.Peminjaman.Sepeda.dto.employee.EmployeeUpdate;
 import com.Peminjaman.Sepeda.dto.loan.LoanHeaderDto;
 import com.Peminjaman.Sepeda.dto.loan.LoanInsertDto;
 import com.Peminjaman.Sepeda.dto.loan.LoanUpdate;
+import com.Peminjaman.Sepeda.entity.Loan;
 import com.Peminjaman.Sepeda.services.EmployeeService;
 import com.Peminjaman.Sepeda.services.LoanService;
 import org.springframework.http.ResponseEntity;

@@ -58,7 +58,8 @@ public class EmployeeService {
     }
 
     public List<LoanHeaderDto> findLoanBYemployee(Integer employeeID){
-        Stream<LoanHeaderDto> loanStream = loanRepository.findLoanByEmployeeID(employeeID).stream();
+        List<Loan> listloant = loanRepository.findbyEmployee(employeeID);
+        Stream<LoanHeaderDto> loanStream = LoanHeaderDto.tolist(listloant).stream();
         return loanStream.collect(Collectors.toList());
 
     }

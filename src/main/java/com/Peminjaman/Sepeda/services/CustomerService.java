@@ -14,6 +14,7 @@ import com.Peminjaman.Sepeda.dto.loan.LoanHeaderDto;
 import com.Peminjaman.Sepeda.entity.Bicycle;
 import com.Peminjaman.Sepeda.entity.Customers;
 import com.Peminjaman.Sepeda.entity.Employee;
+import com.Peminjaman.Sepeda.entity.Loan;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -60,7 +61,8 @@ public class CustomerService {
     }
 
     public List<LoanHeaderDto> findLoanBYcustomer(Integer customerID){
-        Stream<LoanHeaderDto> loanStream = loanRepository.findLoanByCustomer(customerID).stream();
+        List<Loan> listloant = loanRepository.findbyCustomer(customerID);
+        Stream<LoanHeaderDto> loanStream = LoanHeaderDto.tolist(listloant).stream();
         return loanStream.collect(Collectors.toList());
 
     }

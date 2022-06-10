@@ -1,6 +1,7 @@
 package com.Peminjaman.Sepeda.dao;
 
 import com.Peminjaman.Sepeda.dto.loan.LoanHeaderDto;
+import com.Peminjaman.Sepeda.entity.Employee;
 import com.Peminjaman.Sepeda.entity.Loan;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
@@ -20,6 +21,24 @@ public interface LoanRepository extends JpaRepository<Loan,Integer> {
             Where employ.employeeID = :employeeID
             """)
     public List<LoanHeaderDto> findLoanByEmployeeID (Integer employeeID);
+
+    @Query(value = """
+            SELECT * from Loan
+            WHERE EmployeeID = :employeeID)
+            """, nativeQuery = true)
+    List<Loan> findbyEmployee(Integer employeeID);
+
+    @Query(value= """
+            SELECT * from Loan
+            WHERE CustomerID = :customerID)
+            """, nativeQuery = true)
+    List<Loan>  findbyCustomer(Integer customerID);
+
+    @Query(value= """
+            SELECT * from Loan
+            WHERE SepedaID = :sepedaID)
+            """, nativeQuery = true)
+    List<Loan>  findbySepeda(Integer sepedaID);
 
    @Query("""
            Select new  com.Peminjaman.Sepeda.dto.loan.LoanHeaderDto(pinjam.iDpeminjaman,
