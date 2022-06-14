@@ -48,13 +48,14 @@ public class Loan {
     private LocalDate tgl_Pengembalian;
     @Column(name="BiayaPeminjaman")
     private Long biayaPeminjaman;
-
     @Column(name="Perpanjangan_Waktu")
     private LocalDate perpanjanganWaktu;
     @Column(name="BiayaTambahan")
     private Long biayaTambahan;
     @Column(name="Total_Biaya")
     private Long totalBiaya;
+    @Column(name= "Status_Peminjaman")
+    private String statusPeminjaman;
 
 
     public Loan(String sepedaID, Integer customerID, Integer employeeID, LocalDate tgl_peminjaman, LocalDate tgl_Pengembalian, Long biayaPeminjaman) {

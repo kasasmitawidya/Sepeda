@@ -4,6 +4,7 @@ import com.Peminjaman.Sepeda.RestRespon;
 import com.Peminjaman.Sepeda.dto.loan.LoanHeaderDto;
 import com.Peminjaman.Sepeda.dto.loan.LoanInsertDto;
 import com.Peminjaman.Sepeda.dto.loan.LoanUpdate;
+import com.Peminjaman.Sepeda.dto.loan.LoanUpdateStatus;
 import com.Peminjaman.Sepeda.services.LoanService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -55,4 +56,12 @@ public class LoanController {
         ));
     }
 
+    @PostMapping("updatestatus/{loanID}")
+    public ResponseEntity<RestRespon<LoanUpdateStatus>> updatestatus(@PathVariable Integer loanID, @RequestBody LoanUpdateStatus update){
+        return ResponseEntity.ok().body(new RestRespon<>(
+                service.updateStatus(loanID,update),
+                "Data berhasil di update",
+                "200"
+        ));
+    }
 }

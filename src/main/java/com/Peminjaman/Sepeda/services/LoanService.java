@@ -9,6 +9,7 @@ import com.Peminjaman.Sepeda.dto.employee.EmployeeUpdate;
 import com.Peminjaman.Sepeda.dto.loan.LoanHeaderDto;
 import com.Peminjaman.Sepeda.dto.loan.LoanInsertDto;
 import com.Peminjaman.Sepeda.dto.loan.LoanUpdate;
+import com.Peminjaman.Sepeda.dto.loan.LoanUpdateStatus;
 import com.Peminjaman.Sepeda.entity.Bicycle;
 import com.Peminjaman.Sepeda.entity.Employee;
 import com.Peminjaman.Sepeda.entity.Loan;
@@ -70,5 +71,15 @@ public class LoanService {
                 orElseThrow(()-> new EntityNotFoundException("Employee tidak ditemukan"));
         loanRepository.delete(loan);
         return LoanHeaderDto.set(loan);
+    }
+
+    public LoanUpdateStatus updateStatus(Integer id,LoanUpdateStatus updateStatus){
+        Loan olddata = loanRepository.getById(id);
+        olddata.setStatusPeminjaman(updateStatus.getStatus());
+        Bicycle sepeda = bicycleRepositori.getById(olddata.getSepedaID());
+        sepeda.setStatus("Available");
+        bicycleRepositori.save(sepeda);
+        loanRepository.save(olddata);
+        return LoanUpdateStatus.set(olddata);
     }
 }
