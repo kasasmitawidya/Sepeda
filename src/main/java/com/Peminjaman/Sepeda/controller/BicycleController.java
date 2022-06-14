@@ -42,7 +42,7 @@ public class BicycleController {
     }
 
     @PutMapping("{bicycleID}")
-    public ResponseEntity<RestRespon<BicycleUpdate>> update(@PathVariable Integer bicycleID, @RequestBody BicycleUpdate update){
+    public ResponseEntity<RestRespon<BicycleUpdate>> update(@PathVariable String bicycleID, @RequestBody BicycleUpdate update){
         return ResponseEntity.ok().body(new RestRespon<>(
                 service.update(bicycleID,update),
                 "Data berhasil di update",
@@ -51,7 +51,7 @@ public class BicycleController {
     }
 
     @DeleteMapping("{bicycleID}")
-    public ResponseEntity<RestRespon<BicycleHeaderDto>> delete(@PathVariable Integer bicycleID){
+    public ResponseEntity<RestRespon<BicycleHeaderDto>> delete(@PathVariable String bicycleID){
         return  ResponseEntity.ok().body(new RestRespon<>(
                 service.delete(bicycleID),
                 "Data berhasil di hapus",

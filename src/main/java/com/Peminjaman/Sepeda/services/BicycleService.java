@@ -37,18 +37,20 @@ public class BicycleService {
   }
 
     public BicycleHeaderDto insert(BicycleInsert bicycleInsert){
+        long totalSepeda = bicycleRepositori.totalsepeda(bicycleInsert.getJenisSepeda());
         Bicycle bicycle= bicycleInsert.convert();
+        bicycle.setSepedaID(String.format("%s%d",bicycleInsert.getJenisSepeda(),totalSepeda+1));
         bicycleRepositori.save(bicycle);
         return BicycleHeaderDto.set(bicycle);
     }
-    public BicycleUpdate update(Integer id, BicycleUpdate bicycleUpdate){
+    public BicycleUpdate update(String id, BicycleUpdate bicycleUpdate){
         Bicycle oldBicycle =bicycleRepositori.getById(id);
         oldBicycle.setWarnaSepeda(bicycleUpdate.getWarnaSepeda());
         bicycleRepositori.save(oldBicycle);
         return BicycleUpdate.set(oldBicycle);
     }
 
-    public BicycleHeaderDto delete(Integer bicycleID){
+    public BicycleHeaderDto delete(String bicycleID){
         Bicycle bicycle =bicycleRepositori.findById(bicycleID).
                 orElseThrow(()-> new EntityNotFoundException("Bicycle tidak ditemukan"));
         bicycleRepositori.delete(bicycle);

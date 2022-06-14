@@ -9,12 +9,14 @@ import java.util.List;
 
 @Data
 public class BicycleHeaderDto {
-    private final Integer sepedaID;
+    private final String sepedaID;
     private final String jenisSepeda;
+    private final String merekSepeda;
     private final String warnaSepeda;
+    private final String status;
 
     public static BicycleHeaderDto set(Bicycle bicycle){
-        return new BicycleHeaderDto(bicycle.getSepedaID(),bicycle.getJenisSepeda(),bicycle.getWarnaSepeda());
+        return new BicycleHeaderDto(bicycle.getSepedaID(),bicycle.getJenisSepeda(),bicycle.getMerekSepeda(),bicycle.getWarnaSepeda(),bicycle.getStatus());
     }
 
     public static List<BicycleHeaderDto> tolist (List<Bicycle> bicycles){

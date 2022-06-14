@@ -15,7 +15,7 @@ import java.util.List;
 @Data
 public class LoanHeaderDto {
     private final Integer iDpeminjaman;
-    private final Integer sepedaID;
+    private final String sepedaID;
     private final Integer customerID;
     private final  Integer employeeID;
     @DateTimeFormat(pattern = "dd/MM/yyyy")
@@ -23,11 +23,15 @@ public class LoanHeaderDto {
     @DateTimeFormat(pattern = "dd/MM/yyyy")
     private final LocalDate tgl_Pengembalian;
     private final Long biayaPeminjaman;
+    @DateTimeFormat(pattern = "dd/MM/yyyy")
+    private final LocalDate perpanjanganWaktu;
+    private final Long biayaTambahan;
+    private final Long totalBiaya;
 
     public static LoanHeaderDto set(Loan loan){
         return new LoanHeaderDto(loan.getIDpeminjaman(),
                 loan.getSepedaID(),loan.getCustomerID(),loan.getEmployeeID(),
-                loan.getTgl_peminjaman(),loan.getTgl_Pengembalian(),loan.getBiayaPeminjaman());
+                loan.getTgl_peminjaman(),loan.getTgl_Pengembalian(),loan.getBiayaPeminjaman(),loan.getPerpanjanganWaktu(),loan.getBiayaTambahan(),loan.getTotalBiaya());
     }
 
     public static List<LoanHeaderDto> tolist (List<Loan> loans){

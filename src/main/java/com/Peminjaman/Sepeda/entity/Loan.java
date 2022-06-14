@@ -22,7 +22,7 @@ public class Loan {
     private Integer iDpeminjaman;
 
     @Column(name="SepedaID")
-    private Integer sepedaID;
+    private String sepedaID;
 
     @ManyToOne
     @JoinColumn(name="SepedaID", insertable=false, updatable=false)
@@ -49,12 +49,35 @@ public class Loan {
     @Column(name="BiayaPeminjaman")
     private Long biayaPeminjaman;
 
-    public Loan(Integer sepedaID, Integer customerID, Integer employeeID, LocalDate tgl_peminjaman, LocalDate tgl_Pengembalian, Long biayaPeminjaman) {
+    @Column(name="Perpanjangan_Waktu")
+    private LocalDate perpanjanganWaktu;
+    @Column(name="BiayaTambahan")
+    private Long biayaTambahan;
+    @Column(name="Total_Biaya")
+    private Long totalBiaya;
+
+
+    public Loan(String sepedaID, Integer customerID, Integer employeeID, LocalDate tgl_peminjaman, LocalDate tgl_Pengembalian, Long biayaPeminjaman) {
         this.sepedaID = sepedaID;
         this.customerID = customerID;
         this.employeeID = employeeID;
         this.tgl_peminjaman = tgl_peminjaman;
         this.tgl_Pengembalian = tgl_Pengembalian;
         this.biayaPeminjaman = biayaPeminjaman;
+    }
+
+    public Loan(String sepedaID, Bicycle bicycle, Integer customerID, Customers customer, Integer employeeID, Employee employee, LocalDate tgl_peminjaman, LocalDate tgl_Pengembalian, Long biayaPeminjaman, LocalDate perpanjanganWaktu, Long biayaTambahan, Long totalBiaya) {
+        this.sepedaID = sepedaID;
+        this.bicycle = bicycle;
+        this.customerID = customerID;
+        this.customer = customer;
+        this.employeeID = employeeID;
+        this.employee = employee;
+        this.tgl_peminjaman = tgl_peminjaman;
+        this.tgl_Pengembalian = tgl_Pengembalian;
+        this.biayaPeminjaman = biayaPeminjaman;
+        this.perpanjanganWaktu = perpanjanganWaktu;
+        this.biayaTambahan = biayaTambahan;
+        this.totalBiaya = totalBiaya;
     }
 }

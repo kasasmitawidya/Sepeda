@@ -17,15 +17,20 @@ public class Bicycle {
 
     @Id
     @Column(name="SepedaID")
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private  Integer sepedaID;
+    private  String sepedaID;
     @Column(name="JenisSepeda")
     private  String jenisSepeda;
+    @Column(name="MerekSepeda")
+    private  String merekSepeda;
     @Column(name="WarnaSepeda")
     private  String warnaSepeda;
+    @Column(name ="Status")
+    private String status;
 
-    public Bicycle(String jenisSepeda, String warnaSepeda) {
+    public Bicycle(String jenisSepeda,String merekSepeda, String warnaSepeda) {
+        this.merekSepeda = merekSepeda;
         this.jenisSepeda = jenisSepeda;
         this.warnaSepeda = warnaSepeda;
+        this.status ="Available";
     }
 }

@@ -10,7 +10,7 @@ import java.time.format.DateTimeFormatter;
 
 @Data
 public class LoanInsertDto {
-    private final Integer sepedaID;
+    private final String sepedaID;
     private final Integer customerID;
     private final  Integer employeeID;
     private final String tgl_peminjaman;

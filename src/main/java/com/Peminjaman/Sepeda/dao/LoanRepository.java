@@ -13,7 +13,7 @@ public interface LoanRepository extends JpaRepository<Loan,Integer> {
     @Query("""
             Select new  com.Peminjaman.Sepeda.dto.loan.LoanHeaderDto(pinjam.iDpeminjaman,
             bicycle.sepedaID,cus.customerID,employ.employeeID,pinjam.tgl_peminjaman,
-            pinjam.tgl_Pengembalian, pinjam.biayaPeminjaman)
+            pinjam.tgl_Pengembalian, pinjam.biayaPeminjaman,pinjam.perpanjanganWaktu, pinjam.biayaTambahan,pinjam.totalBiaya)
             FROM Loan as pinjam
             INNER JOIN pinjam.customer as cus
             INNER JOIN pinjam.employee as employ
@@ -43,7 +43,7 @@ public interface LoanRepository extends JpaRepository<Loan,Integer> {
    @Query("""
            Select new  com.Peminjaman.Sepeda.dto.loan.LoanHeaderDto(pinjam.iDpeminjaman,
             bicycle.sepedaID,cus.customerID,employ.employeeID,pinjam.tgl_peminjaman,
-            pinjam.tgl_Pengembalian, pinjam.biayaPeminjaman)
+            pinjam.tgl_Pengembalian, pinjam.biayaPeminjaman,pinjam.perpanjanganWaktu, pinjam.biayaTambahan,pinjam.totalBiaya)
             FROM Loan as pinjam
             INNER JOIN pinjam.customer as cus
             INNER JOIN pinjam.employee as employ
@@ -56,7 +56,7 @@ public interface LoanRepository extends JpaRepository<Loan,Integer> {
     @Query("""
              Select new  com.Peminjaman.Sepeda.dto.loan.LoanHeaderDto(pinjam.iDpeminjaman,
             bicycle.sepedaID,cus.customerID,employ.employeeID,pinjam.tgl_peminjaman,
-            pinjam.tgl_Pengembalian, pinjam.biayaPeminjaman)
+            pinjam.tgl_Pengembalian, pinjam.biayaPeminjaman,pinjam.perpanjanganWaktu, pinjam.biayaTambahan,pinjam.totalBiaya)
             FROM Loan as pinjam
             INNER JOIN pinjam.customer as cus
             INNER JOIN pinjam.employee as employ
